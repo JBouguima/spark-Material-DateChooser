@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="32" height="32" buttonMode="true"
+		 rollOver="group1_rollOverHandler(event)"
+		 rollOut="group1_rollOutHandler(event)"
+		 click="selectionHandler(event)"
+		 creationComplete="init(event)">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.jbouguima.nicedates.simplepicker.events.TimeSelectionEvent;
+			
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			
+			[Bindable]private var active:Boolean = false;
+			[Bindable]public var itemValue:Number;
+			[Bindable]public var itemOrder:Number;
+			
+			protected function selectionHandler(event:MouseEvent):void
+			{
+				var evt:TimeSelectionEvent = new TimeSelectionEvent(TimeSelectionEvent.TIME_SELECTED, true, false)
+				active = true;
+				fillColor.color=0x0885e6;
+				labelDisplay.setStyle("color",0xffffff);
+				evt.valueSelected = itemValue;
+				evt.cardinalSelected = itemOrder;
+				dispatchEvent(evt);
+			}
+			
+			protected function group1_rollOverHandler(event:MouseEvent):void
+			{
+				if(!active)
+				{
+					fillColor.color=0x0885e6;
+					labelDisplay.setStyle("color",0xffffff);
+				}
+			}
+			
+			protected function group1_rollOutHandler(event:MouseEvent):void
+			{
+				if(!active)
+				{
+					fillColor.color=0xeeeeee
+					labelDisplay.setStyle("color",0x424141);
+				}
+			}
+			
+			protected function init(event:FlexEvent):void
+			{
+				FlexGlobals.topLevelApplication.systemManager.addEventListener(TimeSelectionEvent.TIME_SELECTED, selectionEventHandler);
+				
+			}
+			
+			protected function selectionEventHandler(event:TimeSelectionEvent):void
+			{
+				if(event.valueSelected != this.itemValue){
+					active = false;
+					fillColor.color=0xeeeeee
+					labelDisplay.setStyle("color",0x424141);
+				}
+					
+			}
+			
+		]]>
+	</fx:Script>
+	<s:Ellipse width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="{active?0x0885e6:0xeeeeee}" id="fillColor"/>
+		</s:fill>
+	</s:Ellipse>
+	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+		<s:Label id="labelDisplay" text="{itemValue.toString()}" fontFamily="MyriadProLight" fontSize="12" fontStyle="normal" 
+				 fontWeight="normal" color="0x424141"/>	
+	</s:VGroup>
+</s:Group>

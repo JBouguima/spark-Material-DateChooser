@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index>
+	<title>Source of NiceDatesPickerDemo</title>
+	<nodes>
+		<node label="src">
+			<node icon="packageIcon" label="com.jbouguima.nicedates.simplepicker" expanded="true">
+				<node icon="mxmlIcon" label="SimplePicker.mxml" url="source/com/jbouguima/nicedates/simplepicker/SimplePicker.mxml.html"/>
+			</node>
+			<node icon="packageIcon" label="com.jbouguima.nicedates.simplepicker.abstracts" expanded="true">
+				<node icon="actionScriptIcon" label="AbstractDateChooserRenderer.as" url="source/com/jbouguima/nicedates/simplepicker/abstracts/AbstractDateChooserRenderer.as.html"/>
+				<node icon="actionScriptIcon" label="AbstractMonthChooserRenderer.as" url="source/com/jbouguima/nicedates/simplepicker/abstracts/AbstractMonthChooserRenderer.as.html"/>
+				<node icon="actionScriptIcon" label="AbstractSimplePicker.as" url="source/com/jbouguima/nicedates/simplepicker/abstracts/AbstractSimplePicker.as.html"/>
+				<node icon="actionScriptIcon" label="AbstractTimeSelector.as" url="source/com/jbouguima/nicedates/simplepicker/abstracts/AbstractTimeSelector.as.html"/>
+				<node icon="actionScriptIcon" label="ChooserDateList.as" url="source/com/jbouguima/nicedates/simplepicker/abstracts/ChooserDateList.as.html"/>
+				<node icon="actionScriptIcon" label="ChooserDateListDay.as" url="source/com/jbouguima/nicedates/simplepicker/abstracts/ChooserDateListDay.as.html"/>
+				<node icon="actionScriptIcon" label="langData.as" url="source/com/jbouguima/nicedates/simplepicker/abstracts/langData.as.html"/>
+				<node icon="actionScriptIcon" label="YearVO.as" url="source/com/jbouguima/nicedates/simplepicker/abstracts/YearVO.as.html"/>
+			</node>
+			<node icon="packageIcon" label="com.jbouguima.nicedates.simplepicker.events" expanded="true">
+				<node icon="actionScriptIcon" label="ChooserDateEvent.as" url="source/com/jbouguima/nicedates/simplepicker/events/ChooserDateEvent.as.html"/>
+				<node icon="actionScriptIcon" label="TimeSelectionEvent.as" url="source/com/jbouguima/nicedates/simplepicker/events/TimeSelectionEvent.as.html"/>
+			</node>
+			<node icon="packageIcon" label="com.jbouguima.nicedates.simplepicker.parts" expanded="true">
+				<node icon="mxmlIcon" label="CircularButton.mxml" url="source/com/jbouguima/nicedates/simplepicker/parts/CircularButton.mxml.html"/>
+				<node icon="mxmlIcon" label="CircularChooseButton.mxml" url="source/com/jbouguima/nicedates/simplepicker/parts/CircularChooseButton.mxml.html"/>
+				<node icon="mxmlIcon" label="DaysTitleList.mxml" url="source/com/jbouguima/nicedates/simplepicker/parts/DaysTitleList.mxml.html"/>
+				<node icon="mxmlIcon" label="monthYearsList.mxml" url="source/com/jbouguima/nicedates/simplepicker/parts/monthYearsList.mxml.html"/>
+				<node icon="mxmlIcon" label="SensibleList.mxml" url="source/com/jbouguima/nicedates/simplepicker/parts/SensibleList.mxml.html"/>
+				<node icon="mxmlIcon" label="TimeSelector.mxml" url="source/com/jbouguima/nicedates/simplepicker/parts/TimeSelector.mxml.html"/>
+				<node icon="mxmlIcon" label="YearRenderer.mxml" url="source/com/jbouguima/nicedates/simplepicker/parts/YearRenderer.mxml.html"/>
+			</node>
+			<node icon="packageIcon" label="com.jbouguima.nicedates.simplepicker.renderer" expanded="true">
+				<node icon="mxmlIcon" label="DateChooserRenderer.mxml" url="source/com/jbouguima/nicedates/simplepicker/renderer/DateChooserRenderer.mxml.html"/>
+				<node icon="mxmlIcon" label="MonthChooserRenderer.mxml" url="source/com/jbouguima/nicedates/simplepicker/renderer/MonthChooserRenderer.mxml.html"/>
+			</node>
+			<node label="com.jbouguima.nicedates.simplepicker.resources">
+				<node label="fonts">
+					<node label="MyriadPro-Light.otf" url="source/com/jbouguima/nicedates/simplepicker/resources/fonts/MyriadPro-Light.otf"/>
+				</node>
+				<node label="img">
+					<node icon="imageIcon" label="CalendarActive.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/CalendarActive.png.html"/>
+					<node icon="imageIcon" label="CalendarDesactive.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/CalendarDesactive.png.html"/>
+					<node icon="imageIcon" label="CalendarInvalid.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/CalendarInvalid.png.html"/>
+					<node icon="imageIcon" label="CalendarNext.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/CalendarNext.png.html"/>
+					<node icon="imageIcon" label="CalendarPrevious.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/CalendarPrevious.png.html"/>
+					<node icon="imageIcon" label="CalendarTimeDown.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/CalendarTimeDown.png.html"/>
+					<node icon="imageIcon" label="CalendarTimeUp.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/CalendarTimeUp.png.html"/>
+					<node icon="imageIcon" label="CalendarUp.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/CalendarUp.png.html"/>
+					<node icon="imageIcon" label="CalendarYearDown.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/CalendarYearDown.png.html"/>
+					<node icon="imageIcon" label="CalendarYearUp.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/CalendarYearUp.png.html"/>
+					<node icon="imageIcon" label="ddd.png" url="source/com/jbouguima/nicedates/simplepicker/resources/img/ddd.png.html"/>
+				</node>
+			</node>
+			<node icon="packageIcon" label="com.jbouguima.nicedates.simplepicker.skins" expanded="true">
+				<node icon="mxmlIcon" label="DateDaysListSkin.mxml" url="source/com/jbouguima/nicedates/simplepicker/skins/DateDaysListSkin.mxml.html"/>
+				<node icon="mxmlIcon" label="inputSkin.mxml" url="source/com/jbouguima/nicedates/simplepicker/skins/inputSkin.mxml.html"/>
+			</node>
+			<node label="com.jbouguima.nicedates.timepicker">
+			</node>
+			<node icon="mxmlAppIcon" selected="true" label="NiceDatesPickerDemo.mxml" url="source/NiceDatesPickerDemo.mxml.html"/>
+		</node>
+	</nodes>
+	<zipfile label="Download source (ZIP, 94K)" url="NiceDatesPickerDemo.zip">
+	</zipfile>
+	<sdklink label="Download Flex SDK" url="http://www.adobe.com/go/flex451_sdk_download">
+	</sdklink>
+</index>

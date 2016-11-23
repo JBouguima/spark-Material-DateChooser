@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abstracts:AbstractDateChooserRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				xmlns:abstracts="com.jbouguima.nicedates.simplepicker.abstracts.*" 
+				autoDrawBackground="false">
+	
+	<s:Group width="46" height="46" buttonMode="true">
+		<s:Ellipse width="100%" height="100%">
+			<s:fill>
+				<s:SolidColor id="bckColor" />
+			</s:fill>
+		</s:Ellipse>
+
+		<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+			<s:Label id="labelDisplay" fontFamily="MyriadProLight" fontSize="13" fontStyle="normal" fontWeight="normal"/>												
+		</s:VGroup>
+	</s:Group>
+</abstracts:AbstractDateChooserRenderer>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" buttonMode="true"
+		 width="32" height="32" creationComplete="init(event)"
+		 click="monthSelectedHandler(event)">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.jbouguima.nicedates.simplepicker.events.ChooserDateEvent;
+			
+			import mx.events.FlexEvent;
+			[Bindable]public var label:String;
+			[Bindable]public var month:Number;
+			[Bindable]public var year:Number;
+			
+			private var _selected:Boolean;
+			private var _current:Boolean;
+			private var itemBackColor:uint = 0xffffff;
+			
+			public function init(e:FlexEvent):void
+			{
+				//if(this.parent) this.parent.addEventListener(MouseEvent.CLICK, clickedHandler);
+				addEventListener(MouseEvent.ROLL_OVER, rollOverHandlr);
+				addEventListener(MouseEvent.ROLL_OUT, rollOutHandlr);
+				//addEventListener(MouseEvent.CLICK, clickedHandler);
+				bckColor.color = itemBackColor;
+			}
+			
+			private function rollOverHandlr(evt:MouseEvent):void
+			{
+				bckColor.color = 0xe0e0e0;
+			}
+			
+			private function rollOutHandlr(evt:MouseEvent):void
+			{
+				bckColor.color = itemBackColor;
+			}
+			
+			public function set selected(value:Boolean):void
+			{
+				_selected = value;
+				if(value){
+					itemBackColor = 0xff9000;
+					labelDisplay.setStyle('color',0xffffff);
+				}
+				else{
+					itemBackColor = 0xffffff;
+				}
+			}
+			
+			public function get selected():Boolean
+			{
+				return _selected;
+			}
+			
+			
+			public function set current(value:Boolean):void
+			{
+				_current = value;
+				if(value && !_selected){
+					itemBackColor = 0x106cc8;
+					labelDisplay.setStyle('color',0xffffff);
+				}else{
+					itemBackColor = 0xffffff;
+				}
+			}
+			
+			public function get current():Boolean
+			{
+				return _current;
+			}
+			
+			
+			protected function monthSelectedHandler(event:MouseEvent):void
+			{
+				var evt:ChooserDateEvent = new ChooserDateEvent(ChooserDateEvent.MONTH_SELECTED, true, false);
+				evt.monthSelected = month;
+				evt.yearSelected = year;
+				dispatchEvent(evt);
+			}
+			
+		]]>
+	</fx:Script>
+		<s:Ellipse width="100%" height="100%">
+			<s:fill>
+				<s:SolidColor id="bckColor" />
+			</s:fill>
+		</s:Ellipse>
+		
+		<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+			<s:Label id="labelDisplay" text="{label}" fontFamily="MyriadProLight" fontSize="12" fontStyle="normal" 
+					 fontWeight="normal"/>												
+		</s:VGroup>
+</s:Group>

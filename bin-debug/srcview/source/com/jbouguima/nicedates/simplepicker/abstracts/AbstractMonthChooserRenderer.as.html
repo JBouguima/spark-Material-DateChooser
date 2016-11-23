@@ -1,0 +1,51 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>AbstractMonthChooserRenderer.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">com</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">jbouguima</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">nicedates</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">simplepicker</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">abstracts</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">com</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">jbouguima</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">nicedates</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">simplepicker</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">parts</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">YearRenderer</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">spark</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">components</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">Label</span>;
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">spark</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">components</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">supportClasses</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">ItemRenderer</span>;
+    
+    <span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">Bindable</span><span class="ActionScriptBracket/Brace">]</span><span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">AbstractMonthChooserRenderer</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">ItemRenderer</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">yearVO</span>:<span class="ActionScriptDefault_Text">YearVO</span>;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">yearDisplay</span>:<span class="ActionScriptDefault_Text">Label</span>;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">yearRenderer</span>:<span class="ActionScriptDefault_Text">YearRenderer</span>;
+        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">AbstractMonthChooserRenderer</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptBracket/Brace">)</span>
+        <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">super</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        
+        <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">data</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">value</span>:<span class="ActionScriptDefault_Text">Object</span><span class="ActionScriptBracket/Brace">)</span>:<span class="ActionScriptReserved">void</span>
+        <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">value</span><span class="ActionScriptBracket/Brace">)</span><span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">super</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">data</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">value</span>;
+                <span class="ActionScriptDefault_Text">yearVO</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">YearVO</span>;
+                <span class="ActionScriptDefault_Text">yearDisplay</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">text</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">yearVO</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">year</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">toString</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptBracket/Brace">)</span>;
+                <span class="ActionScriptDefault_Text">yearRenderer</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">fullYear</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">yearVO</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">year</span>;
+                <span class="ActionScriptDefault_Text">yearRenderer</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">monthList</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">yearVO</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">monthList</span>;
+                <span class="ActionScriptDefault_Text">yearRenderer</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">actualYear</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">yearVO</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">actualYear</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptDefault_Text">yearVO</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">year</span>;
+                <span class="ActionScriptDefault_Text">yearRenderer</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">actualMonth</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">yearVO</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">actualMonth</span>;
+                <span class="ActionScriptDefault_Text">yearRenderer</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">selectedYear</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">yearVO</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">selectedYear</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptDefault_Text">yearVO</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">year</span>;
+                <span class="ActionScriptDefault_Text">yearRenderer</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">selectedMonth</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">yearVO</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">selectedMonth</span>;
+                
+            <span class="ActionScriptBracket/Brace">}</span>
+            
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        
+        
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:List xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Declarations>
+		<s:Fade id="fadeInOut" duration="1000" alphaFrom="1" alphaTo="0" />
+		<!--<s:Rotate3D id="rotate" angleXFrom="0" angleXTo="90" autoCenterTransform="true" duration="800"/>-->
+		
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.IList;
+			import mx.events.CollectionEvent;
+			import mx.events.CollectionEventKind;
+			
+			/**
+			 * Subscribe to collection change event.
+			 */
+			override public function set dataProvider(value:IList):void
+			{
+				if (dataProvider)
+					dataProvider.removeEventListener(CollectionEvent.COLLECTION_CHANGE,
+						dataProvider_collectionChangeHandler);
+				
+				if (value)
+					value.addEventListener(CollectionEvent.COLLECTION_CHANGE, _collectionChangeHandler, false, 0, true);
+				
+				var _itemRenderer:IFactory = this.itemRenderer;
+				this.itemRenderer = null;
+				this.itemRenderer = _itemRenderer; 
+				
+				super.dataProvider = value;
+			}
+			
+			/**
+			 * If collection has changed - redraw list by resetting itemRenderer.
+			 */
+			private function _collectionChangeHandler(event:Event):void
+			{
+				if (event is CollectionEvent)
+				{
+					var ce:CollectionEvent = CollectionEvent(event);
+					
+					// We don't need to refresh if any collection element will change.
+					if(ce.kind != CollectionEventKind.UPDATE)
+					{
+						var _itemRenderer:IFactory = this.itemRenderer;
+						this.itemRenderer = null;
+						this.itemRenderer = _itemRenderer;
+						fadeInOut.play([this], true);
+					}
+				}
+			} 
+			
+			
+		]]>
+	</fx:Script>
+</s:List>

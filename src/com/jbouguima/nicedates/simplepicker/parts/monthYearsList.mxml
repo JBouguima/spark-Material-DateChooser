@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 creationComplete="init(event)"
+		 width="345">
+	<fx:Script>
+		<![CDATA[
+			import com.jbouguima.nicedates.simplepicker.skins.DateDaysListSkin;
+			
+			import mx.collections.ArrayCollection;
+			import mx.effects.AnimateProperty;
+			import mx.events.FlexEvent;
+			
+			import spark.components.DataGroup;
+			
+			
+			[Bindable]public var zamanList:ArrayCollection;
+			
+			protected function init(event:FlexEvent):void
+			{
+				zamanList = new ArrayCollection();
+				for(var i:Number = 1880; i<2131; i++){
+					zamanList.addItem(i);
+				}
+				
+			}
+			
+			private function scrollToIndex(index:int, animationDuration:int = 3000):void {
+				if ((index != -1) && (allDaysLst.layout != null)) {
+					if (animationDuration <= 0) {
+						allDaysLst.ensureIndexIsVisible(index);
+					} else {
+						// this is the same code as in the above ensureIndexIsVisible
+						var spDelta:Point = allDaysLst.dataGroup.layout.getScrollPositionDeltaToElement(index);
+						if ((spDelta != null) && (spDelta.y != 0)) {
+							var target:DataGroup = allDaysLst.dataGroup;
+							// Animate the verticalScrollPosition value
+							// The same could be done for the horizontalScrollPosition and combined in Parallel
+							var animation:AnimateProperty = new AnimateProperty(target);
+							animation.property = "verticalScrollPosition";
+							animation.duration = animationDuration;
+							animation.toValue = target.verticalScrollPosition + spDelta.y;
+							animation.play();
+							
+						}
+					}
+				}
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:List id="allDaysLst" width="100%" height="100%" dataProvider="{zamanList}"
+			itemRenderer="yearRenderer" 
+			skinClass="com.jbouguima.alyawmdate.simplepicker.skins.DateDaysListSkin" >
+		<s:layout>
+			<s:VerticalLayout />
+		</s:layout>
+	</s:List>
+</s:Group>

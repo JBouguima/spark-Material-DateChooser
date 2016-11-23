@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abstracts:AbstractTimeSelector xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:abstracts="com.jbouguima.nicedates.simplepicker.abstracts.*"
+		 xmlns:parts="com.jbouguima.nicedates.simplepicker.parts.*"
+		 creationComplete="init(event)">
+	<fx:Declarations>
+		<s:Rotate id="rotIndic" duration="500"   
+				  autoCenterTransform="true" effectEnd="rotIndicEndHandler(event)"/>
+	</fx:Declarations>
+	
+	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center"
+			  paddingLeft="15" paddingRight="15">
+		<s:Ellipse id="watch" width="80%" height="{watch.width}">
+			<s:fill>
+				<s:SolidColor color="0xeeeeee" id="fillColor"/>
+			</s:fill>
+		</s:Ellipse>
+	</s:VGroup>
+	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center"
+			  paddingLeft="15" paddingRight="15" paddingTop="15" paddingBottom="15">
+		<s:VGroup id="ticks" width="80%" height="80%" gap="0" verticalAlign="middle" horizontalAlign="center">
+			<s:HGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" paddingTop="10">
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(0))}" itemOrder="12"/>
+			</s:HGroup>
+			<s:HGroup width="100%" height="100%" verticalAlign="top" horizontalAlign="center"
+					  paddingLeft="47" paddingRight="47" paddingTop="-15">
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(11))}"  itemOrder="11"/>
+				<s:Line width="100%" />
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(1))}"  itemOrder="1"/>	
+			</s:HGroup>
+			<s:HGroup width="100%" height="100%" verticalAlign="top" horizontalAlign="center"
+					  paddingLeft="15" paddingRight="15" paddingTop="-10">
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(10))}" itemOrder="10"/>
+				<s:Line width="100%" />
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(2))}" itemOrder="2"/>
+			</s:HGroup>
+			<s:HGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center"
+					  paddingLeft="2" paddingRight="2">
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(9))}" itemOrder="9"/>
+				<s:Line width="100%" />
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(3))}" itemOrder="3"/>
+			</s:HGroup>
+			<s:HGroup width="100%" height="100%" verticalAlign="bottom" horizontalAlign="center"
+					  paddingLeft="15" paddingRight="15" paddingBottom="-10">
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(8))}"  itemOrder="8"/>
+				<s:Line width="100%" />
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(4))}"  itemOrder="4"/>
+			</s:HGroup>
+			<s:HGroup width="100%" height="100%" verticalAlign="bottom" horizontalAlign="center"
+					  paddingLeft="47" paddingRight="47" paddingBottom="-15">
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(7))}"  itemOrder="7"/>
+				<s:Line width="100%" />
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(5))}"  itemOrder="5"/>
+			</s:HGroup>
+			<s:HGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" paddingBottom="10">
+				<parts:CircularChooseButton itemValue="{Number(currentValues.getItemAt(6))}"  itemOrder="6"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:VGroup>
+	<s:Group width="100%" height="100%">
+	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center"
+			  paddingLeft="15" paddingRight="15" paddingTop="15" paddingBottom="15">
+		
+			<s:VGroup width="80%" height="80%" verticalAlign="middle" horizontalAlign="center">
+				<s:HGroup width="{watch.width}" gap="0" height="10" verticalAlign="middle"
+						  horizontalAlign="center" id="indicHour" paddingLeft="36" paddingRight="36">
+					<s:Line width="100%" alpha="0">
+						<s:stroke>
+							<s:SolidColorStroke color="0xeeeeee" weight="2"/>
+						</s:stroke>
+					</s:Line>
+					<s:Line width="100%">
+						<s:stroke>
+							<s:SolidColorStroke color="0xf7032b" weight="4"/>
+						</s:stroke>
+						<s:filters>
+							<s:DropShadowFilter color="0xababab" distance="2" angle="90" alpha="0.8" />
+						</s:filters>
+					</s:Line>
+				</s:HGroup>
+			</s:VGroup>	
+
+	</s:VGroup>
+		
+	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center"
+				  paddingLeft="15" paddingRight="15" paddingTop="15" paddingBottom="15">
+		<s:VGroup width="80%" height="80%" verticalAlign="middle" horizontalAlign="center">
+			<s:HGroup width="{watch.width}" gap="0" height="10" verticalAlign="middle"
+					  horizontalAlign="center" id="indicMin" paddingLeft="36" paddingRight="36">
+				<s:Line width="100%" alpha="0">
+					<s:stroke>
+						<s:SolidColorStroke color="0xeeeeee" weight="2"/>
+					</s:stroke>
+				</s:Line>
+				<s:Ellipse width="18" height="18">
+					<s:fill>
+						<s:SolidColor color="0xf7032b"/>
+					</s:fill>
+					<s:filters>
+						<s:DropShadowFilter color="0xababab" distance="2" angle="90" alpha="0.8" />
+					</s:filters>
+				</s:Ellipse>
+				<s:Line width="100%">
+					<s:stroke>
+						<s:SolidColorStroke color="0x00838b" weight="2"/>
+					</s:stroke>
+					<s:filters>
+						<s:DropShadowFilter color="0xababab" distance="2" angle="90" alpha="0.8" />
+					</s:filters>
+				</s:Line>
+			</s:HGroup>
+		</s:VGroup>	
+	</s:VGroup>
+	</s:Group>
+	<s:VGroup width="100%" height="100%" verticalAlign="bottom" horizontalAlign="center" paddingBottom="5">
+
+		<s:HGroup height="35" width="100%" verticalAlign="middle" horizontalAlign="center" gap="0" paddingLeft="20">
+			<s:Group width="50" height="100%" buttonMode="true" click="changeSelectionMode(event,0)">
+				<s:Rect width="100%" height="100%">
+					<s:fill>
+						<s:SolidColor color="0xebebeb" />
+					</s:fill>
+				</s:Rect>
+				<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<s:Label text="{selectedHour}" fontFamily="MyriadProLight" fontSize="26" fontStyle="normal" 
+							 fontWeight="normal" color="0xf7032b"/>	
+				</s:VGroup>
+			</s:Group>
+			<s:Group width="10" height="100%">
+				<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<s:Label text=":" fontFamily="MyriadProLight" fontSize="28" fontStyle="normal" 
+							 fontWeight="normal" color="0x0a6fcd"/>	
+				</s:VGroup>
+			</s:Group>
+			<s:Group width="50" height="100%" buttonMode="true" click="changeSelectionMode(event,1)">
+				<s:Rect width="100%" height="100%">
+					<s:fill>
+						<s:SolidColor color="0xebebeb" />
+					</s:fill>
+				</s:Rect>
+				<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<s:Label text="{selectedMinute}" fontFamily="MyriadProLight" fontSize="26" fontStyle="normal" 
+							 fontWeight="normal" color="0x00838b"/>	
+				</s:VGroup>
+			</s:Group>	
+			<s:HGroup height="35" width="20" verticalAlign="middle" horizontalAlign="center">
+				<s:Label text="{selectedMidday}" fontFamily="MyriadProLight" fontSize="14" fontStyle="normal" 
+						 fontWeight="normal" color="0x2980b9" buttonMode="true" click="changeAMPMMode(event)"/>	
+			</s:HGroup>
+		</s:HGroup>
+
+	</s:VGroup>
+</abstracts:AbstractTimeSelector>

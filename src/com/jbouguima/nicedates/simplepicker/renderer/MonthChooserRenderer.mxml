@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abstracts:AbstractMonthChooserRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				xmlns:abstracts="com.jbouguima.nicedates.simplepicker.abstracts.*" 
+				xmlns:parts="com.jbouguima.nicedates.simplepicker.parts.*" 
+				autoDrawBackground="false">
+	
+	<s:Group height="70" width="100%">
+		<s:HGroup width="100%" height="100%" verticalAlign="middle" gap="5"
+				  paddingLeft="5" paddingTop="5" paddingRight="5" paddingBottom="5">
+			<s:VGroup width="50" height="100%" verticalAlign="middle" horizontalAlign="center">
+				<s:Label id="yearDisplay" fontFamily="MyriadProLight" fontSize="16"
+						 fontStyle="normal" fontWeight="normal"/>
+			</s:VGroup>
+			<parts:YearRenderer id="yearRenderer" width="100%" height="100%" />
+		</s:HGroup>
+	</s:Group>
+	
+</abstracts:AbstractMonthChooserRenderer>

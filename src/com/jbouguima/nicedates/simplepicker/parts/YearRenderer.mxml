@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:parts="com.jbouguima.nicedates.simplepicker.parts.*" >
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			
+			[Bindable]public var monthList:ArrayCollection;
+			private var _selectedMonth:Number;
+			private var _selectedYear:Boolean;
+			private var _actualMonth:Number;
+			private var _actualYear:Boolean;
+			private var _fullYear:Number;
+			
+			public function set selectedMonth(value:Number):void
+			{
+				if(_selectedYear){
+					_selectedMonth = value;
+					switch(_selectedMonth)
+					{
+						case 0:
+						{
+							janBtn.selected = true;
+							break;
+						}
+						case 1:
+						{
+							febBtn.selected = true;
+							break;
+						}
+						case 2:
+						{
+							marBtn.selected = true;
+							break;
+						}
+						case 3:
+						{
+							aprBtn.selected = true;
+							break;
+						}
+						case 4:
+						{
+							maiBtn.selected = true;
+							break;
+						}
+						case 5:
+						{
+							junBtn.selected = true;
+							break;
+						}
+						case 6:
+						{
+							julBtn.selected = true;
+							break;
+						}
+						case 7:
+						{
+							augBtn.selected = true;
+							break;
+						}
+						case 8:
+						{
+							sepBtn.selected = true;
+							break;
+						}
+						case 9:
+						{
+							octBtn.selected = true;
+							break;
+						}
+						case 10:
+						{
+							novBtn.selected = true;
+							break;
+						}
+						case 11:
+						{
+							decBtn.selected = true;
+							break;
+						}
+						default:
+						{
+							janBtn.selected = true;
+							break;
+						}
+					}
+				}
+
+			}
+			
+			public function get selectedMonth():Number
+			{
+				return _selectedMonth;
+			}	
+			
+			public function set actualMonth(value:Number):void
+			{
+				if(_actualYear){
+					_actualMonth = value;
+					switch(_actualMonth)
+					{
+						case 0:
+						{
+							janBtn.current = true;
+							break;
+						}
+						case 1:
+						{
+							febBtn.current = true;
+							break;
+						}
+						case 2:
+						{
+							marBtn.current = true;
+							break;
+						}
+						case 3:
+						{
+							aprBtn.current = true;
+							break;
+						}
+						case 4:
+						{
+							maiBtn.current = true;
+							break;
+						}
+						case 5:
+						{
+							junBtn.current = true;
+							break;
+						}
+						case 6:
+						{
+							julBtn.current = true;
+							break;
+						}
+						case 7:
+						{
+							augBtn.current = true;
+							break;
+						}
+						case 8:
+						{
+							sepBtn.current = true;
+							break;
+						}
+						case 9:
+						{
+							octBtn.current = true;
+							break;
+						}
+						case 10:
+						{
+							novBtn.current = true;
+							break;
+						}
+						case 11:
+						{
+							decBtn.current = true;
+							break;
+						}
+						default:
+						{
+							janBtn.current = true;
+							break;
+						}
+					}
+				}
+
+			}
+			
+			public function get actualMonth():Number
+			{
+				return _actualMonth;
+			}
+			
+			public function set actualYear(value:Boolean):void
+			{
+				 _actualYear = value;
+			}				
+			
+			public function get actualYear():Boolean
+			{
+				return _actualYear;
+			}	
+			
+			
+			public function set selectedYear(value:Boolean):void
+			{
+				_selectedYear = value;
+			}				
+			
+			public function get selectedYear():Boolean
+			{
+				return _selectedYear;
+			}	
+			
+			
+			public function set fullYear(value:Number):void
+			{
+				_fullYear = value;
+			}				
+			
+			[Bindable]
+			public function get fullYear():Number
+			{
+				return _fullYear;
+			}	
+		]]>
+	</fx:Script>
+	<s:VGroup width="100%" height="100%" verticalAlign="middle" gap="2">
+		<s:HGroup width="100%" height="50%" verticalAlign="middle" gap="2">
+			<parts:CircularButton id="janBtn" month="0" year="{fullYear}" label="{monthList.getItemAt(0)}" />
+			<parts:CircularButton id="febBtn" month="1" year="{fullYear}" label="{monthList.getItemAt(1)}" />
+			<parts:CircularButton id="marBtn" month="2" year="{fullYear}" label="{monthList.getItemAt(2)}" />
+			<parts:CircularButton id="aprBtn" month="3" year="{fullYear}" label="{monthList.getItemAt(3)}" />
+			<parts:CircularButton id="maiBtn" month="4" year="{fullYear}" label="{monthList.getItemAt(4)}" />
+			<parts:CircularButton id="junBtn" month="5" year="{fullYear}" label="{monthList.getItemAt(5)}" />
+		</s:HGroup>
+		<s:HGroup width="100%" height="50%" verticalAlign="middle" gap="2">
+			<parts:CircularButton id="julBtn" month="6"  year="{fullYear}" label="{monthList.getItemAt(6)}" />
+			<parts:CircularButton id="augBtn" month="7"  year="{fullYear}" label="{monthList.getItemAt(7)}" />
+			<parts:CircularButton id="sepBtn" month="8"  year="{fullYear}" label="{monthList.getItemAt(8)}" />
+			<parts:CircularButton id="octBtn" month="9"  year="{fullYear}" label="{monthList.getItemAt(9)}" />
+			<parts:CircularButton id="novBtn" month="10" year="{fullYear}"  label="{monthList.getItemAt(10)}" />
+			<parts:CircularButton id="decBtn" month="11" year="{fullYear}"  label="{monthList.getItemAt(11)}" />
+		</s:HGroup>
+	</s:VGroup>
+</s:Group>

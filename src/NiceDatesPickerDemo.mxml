@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:nicedates="com.jbouguima.nicedates.simplepicker.*"
+			   minWidth="955" minHeight="600"
+			   backgroundColor="0xfafafa" >
+	<fx:Declarations>
+	</fx:Declarations>
+
+	<s:VGroup width="100%" height="100%">
+		<s:Group width="100%" height="50">
+			<s:Rect width="100%" height="100%">
+				<s:fill>
+					<s:SolidColor color="0x2ac5c0" />
+				</s:fill>
+			</s:Rect>
+			<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+				<s:Label color="0xffffff" fontSize="18" fontStyle="normal" fontWeight="normal" text="NiceDates Flex SimpleDatepicker Demo" />
+			</s:VGroup>
+		</s:Group>
+		
+
+		<s:VGroup width="100%" height="100%" verticalAlign="top" paddingTop="30" horizontalAlign="center" >
+			
+			<nicedates:SimplePicker chooserDate="{new Date (2016, 9, 14)}" lang="en_US"/>
+		</s:VGroup>	
+
+				  
+	</s:VGroup>
+</s:Application>

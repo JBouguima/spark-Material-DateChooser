@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abstracts:AbstractSimplePicker xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:abstracts="com.jbouguima.nicedates.simplepicker.abstracts.*"
+		 xmlns:parts="com.jbouguima.nicedates.simplepicker.parts.*"
+		 currentState="datePickMode">
+	<fx:Declarations>
+		<s:Parallel id="fadeResizeShow" duration="1500">
+			<s:Resize  widthFrom="0" widthTo="40" heightFrom="0" heightTo="40" />
+			<s:Fade alphaFrom="0" alphaTo="1" />
+		</s:Parallel>
+		
+		<s:Parallel id="showYearsPanel" duration="300">
+			<s:Resize  heightFrom="30" heightTo="355" />
+			<s:Move yFrom="{popup.y+355}" yTo="{popup.y+40}" />
+		</s:Parallel>
+		<s:Parallel id="hideYearsPanel" duration="300">
+			<s:Resize  heightFrom="355" heightTo="30" />
+			<s:Move yFrom="{popup.y+40}" yTo="{popup.y+355}" />
+		</s:Parallel>
+		
+		<s:Parallel id="showTimePanel" duration="300">
+			<s:Resize  heightFrom="30" heightTo="355" />
+			<s:Move yFrom="{popup.y+355}" yTo="{popup.y+40}" />
+		</s:Parallel>
+		<s:Parallel id="hideTimePanel" duration="300">
+			<s:Resize  heightFrom="355" heightTo="30" />
+			<s:Move yFrom="{popup.y+40}" yTo="{popup.y+355}" />
+		</s:Parallel>
+		
+		<s:Resize id="openPopupResize" duration="300" widthFrom="{intialWidth}" 
+				  widthTo="{finalWidth}" heightFrom="{initialHeight}" heightTo="{finalHeight}" />
+
+	</fx:Declarations>
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		@namespace abstracts "com.jbouguima.alyawmdate.simplepicker.abstracts.*";
+		@namespace parts "com.jbouguima.alyawmdate.simplepicker.parts.*";
+		
+		@font-face {
+			fontFamily: MyriadProLight;
+			src: url("resources/fonts/MyriadPro-Light.otf");
+		}
+	</fx:Style>
+	<abstracts:states>
+		<s:State name="yearMonthPickMode" />
+		<s:State name="timePickMode" />
+		<s:State name="datePickMode" />
+	</abstracts:states>
+	
+	<s:HGroup width="160" height="40" verticalAlign="middle" gap="0" horizontalAlign="center">
+		<s:Group height="40" width="40" buttonMode="true" id="openChooserBtn">
+			<s:Ellipse id="vagueGrey" width="0" height="0" horizontalCenter="0" verticalCenter="0">
+				<s:fill>
+					<s:RadialGradient>
+						<s:GradientEntry color="0xe8e8e8" />
+						<s:GradientEntry color="0xefefef" />
+					</s:RadialGradient>
+				</s:fill>
+			</s:Ellipse>
+			<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" >
+				<s:Image id="btnCal" source="{calendarClosedIcon}" />
+			</s:VGroup>
+			<s:PopUpAnchor id="popup" x="{openChooserBtn.x+60}" y="{openChooserBtn.y}" >
+				<s:Group id="container" width="173" height="195" mouseDownOutside="popup_mouseDownOutsideHandler(event)">
+					<s:Rect width="100%" height="100%">
+						<s:fill>
+							<s:SolidColor color="0xffffff"/>
+						</s:fill>
+						<s:stroke>
+							<s:SolidColorStroke color="0xe0e0e0"/>
+						</s:stroke>
+					</s:Rect>
+					<s:VGroup width="100%" height="100%" verticalAlign="top" horizontalAlign="center" gap="0">
+						<s:Group width="100%" height="40">
+							<s:Rect width="100%" height="100%">
+								<s:fill>
+									<s:SolidColor color="0xffffff"/>
+								</s:fill>
+							</s:Rect>
+							<s:HGroup width="100%" height="100%" verticalAlign="middle">
+								<s:HGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="left" paddingLeft="20">
+									<s:Label id="currentDateLbl" fontSize="15" fontFamily="MyriadProLight" color="0x656565"/>
+								</s:HGroup>
+								<s:HGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="right" paddingRight="20">
+									<s:Label text="{actualMonthYear}" fontSize="15" fontFamily="MyriadProLight" color="0x656565"/>
+								</s:HGroup>
+							</s:HGroup>
+						</s:Group>
+						<parts:DaysTitleList width="100%" dayNames="{dayNames}"/>
+						<s:Group width="100%" height="100%">
+							<s:Rect width="100%" height="100%">
+								<s:fill>
+									<s:SolidColor color="0xffffff"/>
+								</s:fill>
+							</s:Rect>
+							<s:VGroup id="bodycontainer" width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" paddingLeft="7">
+								<parts:SensibleList id="daysLst" width="100%" height="100%" dataProvider="{currentDateDaysList}"
+													skinClass="com.jbouguima.nicedates.simplepicker.skins.DateDaysListSkin"  includeInLayout="false"
+													itemRenderer="com.jbouguima.nicedates.simplepicker.renderer.DateChooserRenderer" >
+									<parts:layout>
+										<s:TileLayout requestedColumnCount="7" requestedRowCount="6" horizontalGap="1" verticalGap="1"/>
+									</parts:layout>
+								</parts:SensibleList>
+							</s:VGroup>
+						</s:Group>
+						<s:Group width="100%" height="30">
+						</s:Group>
+					</s:VGroup>
+					<s:VGroup width="100%" height="100%" verticalAlign="bottom">
+						<s:Group id="yearChooserGrp" width="100%" height="30">
+							<s:Rect width="100%" height="100%">
+								<s:fill>
+									<s:SolidColor color="0xffffff" id="backYearColor"/>
+								</s:fill>
+							</s:Rect>
+							
+							<s:VGroup id="yearBodyContainer" width="100%" height="100%" verticalAlign="middle" 
+									  horizontalAlign="center" paddingLeft="7" >
+								<parts:SensibleList id="monthLst" width="100%" height="100%" dataProvider="{currentYearsRangeList}"
+													skinClass="com.jbouguima.nicedates.simplepicker.skins.DateDaysListSkin"  includeInLayout="false"
+													itemRenderer="com.jbouguima.nicedates.simplepicker.renderer.MonthChooserRenderer" >
+									<parts:layout>
+										<s:VerticalLayout gap="5" verticalAlign="middle" paddingBottom="5"/>
+									</parts:layout>
+								</parts:SensibleList>
+								<parts:TimeSelector  id="timeSelector"  width="100%" height="100%" includeInLayout="false" visible="false"/>
+							</s:VGroup>
+							
+							<s:VGroup width="100%" height="100%" verticalAlign="top" paddingTop="5">
+								<s:HGroup width="100%" height="24" verticalAlign="middle">
+									<s:HGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="left" paddingLeft="10">
+										<s:Group height="24" width="24" buttonMode="true" id="btnPrevCal" 
+												 rollOver="{btnPrevColor.color=0xe8e8e8}" rollOut="{btnPrevColor.color=0xffffff}">
+											<s:Ellipse width="100%" height="100%" horizontalCenter="0" verticalCenter="0">
+												<s:fill>
+													<s:SolidColor color="0xffffff" id="btnPrevColor"/>
+												</s:fill>
+											</s:Ellipse>
+											<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" >
+												<s:Image source="{calendarPreviousIcon}" />
+											</s:VGroup>
+										</s:Group>
+									</s:HGroup>
+									<s:HGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" gap="15">
+										<s:Group height="24" width="24" buttonMode="true" id="btnChooseYear" 
+												 rollOver="{btnYearColor.color=0xe8e8e8}" rollOut="{btnYearColor.color=0xffffff}">
+											<s:Ellipse width="100%" height="100%" horizontalCenter="0" verticalCenter="0">
+												<s:fill>
+													<s:SolidColor  color="0xffffff" id="btnYearColor"/>
+												</s:fill>
+											</s:Ellipse>
+											<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" >
+												<s:Image id="upDownYearChooseImg" source="{calendarYearPickDownIcon}" />
+											</s:VGroup>
+										</s:Group>
+										<s:Group height="24" width="24" buttonMode="true" id="btnChooseTime" 
+												 rollOver="{btnTimeColor.color=0xe8e8e8}" rollOut="{btnTimeColor.color=0xffffff}">
+											<s:Ellipse width="100%" height="100%" horizontalCenter="0" verticalCenter="0">
+												<s:fill>
+													<s:SolidColor  color="0xffffff" id="btnTimeColor"/>
+												</s:fill>
+											</s:Ellipse>
+											<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" >
+												<s:Image id="upDownTimeChooseImg" source="{calendarTimePickDownIcon}" />
+											</s:VGroup>
+										</s:Group>
+									</s:HGroup>
+									<s:HGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="right" paddingRight="10">
+										<s:Group height="24" width="24" buttonMode="true" id="btnNextCal" 
+												 rollOver="{btnNextColor.color=0xe8e8e8}" rollOut="{btnNextColor.color=0xffffff}">
+											<s:Ellipse width="100%" height="100%" horizontalCenter="0" verticalCenter="0">
+												<s:fill>
+													<s:SolidColor  color="0xffffff" id="btnNextColor"/>
+												</s:fill>
+											</s:Ellipse>
+											<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" >
+												<s:Image source="{calendarNextIcon}" />
+											</s:VGroup>
+										</s:Group>
+									</s:HGroup>
+								</s:HGroup>
+							</s:VGroup>
+
+						</s:Group>
+					</s:VGroup>
+					<s:filters>
+						<s:DropShadowFilter alpha="0.8" distance="2" angle="45" color="0x999999" />
+					</s:filters>
+				</s:Group>
+			</s:PopUpAnchor>
+		</s:Group>
+		<s:TextInput id="dateInput" skinClass="com.jbouguima.nicedates.simplepicker.skins.inputSkin" 
+					 fontSize="15" fontFamily="MyriadProLight" color="0x656565" />
+	</s:HGroup>
+</abstracts:AbstractSimplePicker>
